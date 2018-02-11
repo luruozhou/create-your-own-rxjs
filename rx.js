@@ -5,6 +5,9 @@ class Observer {
     }
     constructor(observer) {
         this.unsubscribed = false;
+        if (observer instanceof Observer) {
+            return observer;
+        }
         if (typeof observer == 'function') {
             this.nextFn = observer;
         } else if (typeof observer == 'object') {
