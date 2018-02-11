@@ -1,0 +1,19 @@
+{
+  "name": "create-your-own-rxjs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "rx.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luruozhou/create-your-own-rxjs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/luruozhou/create-your-own-rxjs/issues"
+  },
+  "homepage": "https://github.com/luruozhou/create-your-own-rxjs#readme"
+}

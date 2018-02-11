@@ -280,6 +280,23 @@ class Observable {
             return () => clearTimeout(timerId)
         })
     }
+    merge(stream$) {
+        return Observable.create(observer => {
+            let ob = {
+                next: val => {
+                    observer.next(val);
+                },
+                error: err => obser.next(err),
+                complete: () => observer.complete()
+            }
+            let unsubscribeFn1 = this.subscribe(ob);
+            let unsubscribeFn2 = stream$.subscribe(ob)
+            return () => {
+                unsubscribeFn1 && unsubscribeFn1();
+                unsubscribeFn2 && unsubscribeFn2();
+            }
+        })
+    }
     map(fn) {
         return new Observable(observer => {
             let unsubcribeFn = this.subscribe({
@@ -464,18 +481,6 @@ class Observable {
 
 const Rx = {
     Observable,
-    Observer
+    Observer,
+    Subject
 }
-let stream$ =
-    Rx.Observable
-        .of(1, 2, 3, 4, 5)
-        .do((value) => {
-            console.log('do=====', value)
-        })
-        .filter((value) => {
-            return value % 2 === 0;
-        })
-
-stream$.subscribe((value) => {
-    console.log('value', value)
-})
